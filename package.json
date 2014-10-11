@@ -1,0 +1,17 @@
+{
+  "name": "ApplePOC",
+  "description": "ApplePOC Test App",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.x",
+    "mongoose": "3.8.17",
+    "body-parser": "1.9.0",
+    "method-override": "2.2.0",
+    "errorhandler": "1.2.0",
+    "mongoose-paginate": "~3.1.1",
+    "synchronize": "~0.9.8",
+    "q": "~1.0.1",
+    "nestableflow": "0.0.14"
+  }
+}
