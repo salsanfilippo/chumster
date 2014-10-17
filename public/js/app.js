@@ -1,6 +1,6 @@
 'use strict';
 
-var eventsApp = angular.module('eventsApp', ['ui.bootstrap', 'ngRoute', 'ngResource']) // 'ngResource', ui.bootstrap'
+var chumsterApp = angular.module('chumsterApp', ['ui.bootstrap', 'ngRoute', 'ngResource']) // 'ngResource', ui.bootstrap'
     .config(function ($routeProvider, $locationProvider){
         $routeProvider.when('/home',
                             { templateUrl: '/templates/Home.html', controller: 'HomeController' });

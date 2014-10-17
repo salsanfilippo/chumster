@@ -1,7 +1,7 @@
 'use strict';
 
 eventsApp.factory('userData', function ($resource) {
-    var resource = $resource('/api/login/:email/with/:password', {email:'@email, password: @password'}, { });
+    var resource = $resource('/api/auth/with/:email/and/:password', { email:'@email', password:'@password' }, { });
     return {
         getUser: function(email, password, callback) {
             return resource.get({email: email, password: password},
