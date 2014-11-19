@@ -1,10 +1,10 @@
 'use strict';
 
-eventsApp.controller('MainMenuController',
+app.controller('MainMenuController',
     function MainMenuController($scope, $location, authService) {
         $scope.user = {};
-        $scope.$watch(authService.getCurrentUserName, function () {
-            $scope.user = authService.getCurrentUserName();
+        $scope.$watch(authService.getAuthUser, function () {
+            $scope.user = authService.getAuthUser();
         });
 
         $scope.isAuthenticated = function () {
@@ -12,7 +12,8 @@ eventsApp.controller('MainMenuController',
         };
 
         $scope.logout = function () {
-            authService.logOut();
+            authService.signOut();
+            $location.url('/home', true);
         };
 
         $scope.createEvent = function() {

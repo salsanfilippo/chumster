@@ -1,11 +1,15 @@
 'use strict';
 
-var chumsterApp = angular.module('chumsterApp', ['ui.bootstrap', 'ngRoute', 'ngResource']) // 'ngResource', ui.bootstrap'
+var app = angular.module('chumster', ['ui.bootstrap', 'ngRoute', 'ngResource', 'ngMessages'])
     .config(function ($routeProvider, $locationProvider){
+        $routeProvider.when( '/', {
+                              redirectTo: '/home' })
         $routeProvider.when('/home',
-                            { templateUrl: '/templates/Home.html', controller: 'HomeController' });
+                            { templateUrl: '/templates/home.html', controller: 'HomeController' });
         $routeProvider.when('/friends',
-                            { templateUrl: '/templates/Friends.html', controller: 'FriendsController' });
+                            { templateUrl: '/templates/friends.html', controller: 'FriendsController' });
+        $routeProvider.when('/friends',
+                            { templateUrl: '/templates/friend.html', controller: 'FriendsController' });
         $routeProvider.when('/register',
                             { templateUrl: '/templates/editProfile.html', controller: 'EditProfileController' });
         $routeProvider.when('/editProfile',
