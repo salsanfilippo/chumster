@@ -154,11 +154,11 @@ if (!String.sprintf) {
         negative: (parseFloat(arguments[paramIndex]) < 0) ? true : false,
         /* padding character (default: <space>) */
         padding: (part[2] == undefined)
-          ? (' ') /* default */
-          : ((part[2].substring(0, 1) == "'")
-          ? (part[3]) /* use special char */
-          : (part[2]) /* use normal <space> or zero */
-                 ),
+                            ? (' ') /* default */
+                            : ((part[2].substring(0, 1) == "'")
+                                          ? (part[3]) /* use special char */
+                                          : (part[2]) /* use normal <space> or zero */
+                ),
         /* should the output be aligned left?*/
         alignLeft: (part[4] == '-'),
         /* width specifier (number or false) */
@@ -202,16 +202,16 @@ if (!String.sprintf) {
           break;
         case 'f':
           preSubstitution = (parts[i].precision === false)
-            ? (String((Math.abs(parseFloat(parts[i].data)))))
-            : (Math.abs(parseFloat(parts[i].data)).toFixed(parts[i].precision));
+                                          ? (String((Math.abs(parseFloat(parts[i].data)))))
+                                          : (Math.abs(parseFloat(parts[i].data)).toFixed(parts[i].precision));
           break;
         case 'o':
           preSubstitution = Math.abs(parseInt(parts[i].data)).toString(8);
           break;
         case 's':
           preSubstitution = parts[i].data.substring(0, parts[i].precision
-            ? parts[i].precision
-            : parts[i].data.length); /* Cut if precision is defined */
+                                          ? parts[i].precision
+                                          : parts[i].data.length); /* Cut if precision is defined */
           break;
         case 'x':
           preSubstitution = Math.abs(parseInt(parts[i].data)).toString(16).toLowerCase();
@@ -239,8 +239,8 @@ if (!String.sprintf) {
           var origLength = preSubstitution.length;
           for(var j = 0; j < parts[i].width - origLength; ++j) {
             preSubstitution = (parts[i].alignLeft == true)
-              ? (preSubstitution + parts[i].padding)
-              : (parts[i].padding + preSubstitution);
+                                            ? (preSubstitution + parts[i].padding)
+                                            : (parts[i].padding + preSubstitution);
           }
         }
       }
@@ -248,8 +248,8 @@ if (!String.sprintf) {
       // Add a sign symbol if necessary or enforced, but only if we are
       // not handling a string
       if (parts[i].type == 'b' || parts[i].type == 'd' ||
-        parts[i].type == 'o' || parts[i].type == 'f' ||
-        parts[i].type == 'x' || parts[i].type == 'X') {
+          parts[i].type == 'o' || parts[i].type == 'f' ||
+          parts[i].type == 'x' || parts[i].type == 'X') {
         if (parts[i].negative == true) {
           preSubstitution = "-" + preSubstitution;
         } else if (parts[i].sign == true) {
@@ -437,21 +437,21 @@ if (!String.prototype.md5) {
     var x = new Array();
     var k, AA, BB, CC, DD, a, b, c, d;
     var S11 = 7,
-      S12 = 12,
-      S13 = 17,
-      S14 = 22;
+        S12 = 12,
+        S13 = 17,
+        S14 = 22;
     var S21 = 5,
-      S22 = 9,
-      S23 = 14,
-      S24 = 20;
+        S22 = 9,
+        S23 = 14,
+        S24 = 20;
     var S31 = 4,
-      S32 = 11,
-      S33 = 16,
-      S34 = 23;
+        S32 = 11,
+        S33 = 16,
+        S34 = 23;
     var S41 = 6,
-      S42 = 10,
-      S43 = 15,
-      S44 = 21;
+        S42 = 10,
+        S43 = 15,
+        S44 = 21;
 
     var string = utf8Encode(this);
 
@@ -600,8 +600,8 @@ if (!String.prototype.toCamelCase) {
 if (!String.prototype.toProperCase) {
   String.prototype.toProperCase = function () {
     return this.replace(/\b\w/g,
-      function (string) {
-        return string.toUpperCase();
-      });
+                        function (string) {
+                          return string.toUpperCase();
+                        });
   };
 }
