@@ -14,8 +14,8 @@
  * @property string {object} Include String extension methods
  **/
 var Includes = {
-                 object: require('./object.js'),
-                 string: require('./string.js')
+                 object: require('./public/js/object.js'),
+                 string: require('./public/js/string.js')
                };
 
 // Module imports
