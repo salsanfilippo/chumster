@@ -1,0 +1,136 @@
+<div style="margin: 8px 15px 8px 15px; ">
+  <form name="uploadForm" method='post' enctype='multipart/form-data'>
+    <h4>Upload photos to your account below.</h4>
+    <select class="form-control"
+            style="height: 150px;"
+            ng-model="selectedColor"
+            ng-options="color.name for color in colors"
+            size="5">
+    </select>
+
+    <!-- Static List -->
+    <div style="border: 1px solid #ccc; border-radius: 4px; height: 150px; margin-top: 10px; margin-bottom: 10px; overflow: scroll;">
+    <ul class="form-control" style="list-style: none; height: auto; border: none; margin: 0px; padding: 8px;">
+      <li ng-repeat="color in colors">{{color.name}} - {{color.shade}}</li>
+    </ul>
+    </div>
+
+    <label class="file-container" style="width: 100px;">
+      Select Files
+      <input type="file" name="uploadPhoto" ng-file-select="onFileSelect($files)" multiple>
+    </label>
+    <div class="divider"/>
+    <button id="uploadButton" class="btn btn-default" style="width: 100px;" ng-click="uploadFiles($files)">Upload</button>
+    <br/><br/>
+    Selected files: {{filesSelected.length || 'None'}}
+    <br/><br/>
+    <p id="foo">My name is Donald</p>
+    <p id="bar">I live in Ducksburg</p>
+  </form>
+  <br/>
+  <br/>
+  <div class="container-fluid" style="text-align: justify;">
+    <div class="row-fluid">
+      <div class="col-xs-6">
+        <!--Sidebar content-->
+        <h4>What is Lorem Ipsum?</h4>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+        but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+        in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        <br/>
+        <br/>
+        <h4>Where Does it come from?</h4>
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+        classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
+        Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
+        words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in
+        classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32
+        and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written
+        in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+        1.10.32.
+
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+        Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced
+        in their exact original form, accompanied by English versions from the 1914 translation by H.
+        Rackham.
+      </div>
+      <div class="col-xs-6">
+        <!--Body content-->
+        <h4>Why do we use it?</h4>
+        It is a long established fact that a reader will be distracted by the readable content of a page
+        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+        distribution of letters, as opposed to using 'Content here, content here', making it look like
+        readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as
+        their default model text, and a search for 'lorem ipsum' will uncover many web sites still in
+        their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on
+        purpose (injected humour and the like).
+
+        <h4>Where can I get some?</h4>
+        There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+        alteration in some form, by injected humour, or randomised words which don't look even slightly
+        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
+        anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the
+        Internet tend to repeat predefined chunks as necessary, making this the first true generator
+        on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model
+        sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum
+        is therefore always free from repetition, injected humour, or non-characteristic words etc.
+      </div>
+      <div class="col-xs-12">
+        <h4>Lorem Ipsum</h4>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum ultricies augue,
+        maximus varius purus congue dignissim. Aenean tincidunt nibh ac nunc condimentum semper.
+        Suspendisse euismod orci non libero maximus scelerisque. Nam id lacinia ex. Cras eget nulla
+        vulputate, efficitur risus quis, auctor est. Cras quis blandit nisi. Cras consectetur, neque
+        vel bibendum pretium, odio lectus faucibus dui, vel lacinia leo tortor ut orci. Aliquam placerat
+        metus at libero ultrices imperdiet. Etiam augue augue, congue sed dolor vitae, congue tristique
+        mauris. Nam nisi nibh, faucibus sed faucibus at, tempor convallis nunc. Sed tincidunt lacus neque,
+        in cursus elit vehicula vitae. Praesent sit amet blandit eros. Nullam posuere dictum mi. Donec
+        lacus neque, aliquam et euismod et, ultrices sed turpis.
+        <br/>
+        <br/>
+        Phasellus fermentum, nulla et vulputate accumsan, arcu eros egestas diam, quis varius mauris sem
+        at erat. Integer velit nisl, gravida vel convallis ac, gravida scelerisque nisl. Maecenas
+        mattis molestie urna id sollicitudin. Maecenas congue purus eu egestas blandit. Morbi a elementum
+        nisi, quis pellentesque dui. Suspendisse tempus ultricies pulvinar. Suspendisse potenti. Praesent
+        ac accumsan libero. Nam condimentum mauris ut libero posuere, at congue enim aliquam. Cum sociis
+        natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse suscipit
+        sagittis mauris, at egestas risus ornare nec. Nam eu erat consequat, commodo velit id, fringilla
+        sem.
+        <br/>
+        <br/>
+        Sed a enim fermentum, consequat libero a, placerat diam. Suspendisse pretium bibendum urna. Mauris
+        scelerisque massa metus, id ullamcorper velit imperdiet non. In tempor libero arcu, nec fermentum
+        dolor consectetur ut. Ut urna lorem, bibendum eget velit et, cursus consectetur massa. In et libero
+        in quam maximus congue. Integer ac nibh mauris. Phasellus pretium maximus nulla, id tincidunt ligula
+        faucibus in. Phasellus ut arcu semper, tempor est in, ultrices nulla. Morbi sed lorem sagittis,
+        iaculis nisl non, ullamcorper nunc.
+        <br/>
+        <br/>
+        Mauris et sodales velit. Nullam at purus purus. Mauris elit velit, semper in blandit vel, tincidunt
+        at dui. Phasellus sit amet diam sit amet ex sagittis sodales vel eu magna. Fusce purus augue, dictum
+        sed dictum rhoncus, consectetur tristique nisi. Maecenas rutrum tempus velit vitae tempus.
+        Suspendisse potenti. Donec a pharetra augue. Vestibulum ante ipsum primis in faucibus orci luctus et
+        ultrices posuere cubilia Curae; In vitae volutpat ex. Donec consectetur tincidunt tortor, non
+        consectetur libero dapibus sed. Nulla posuere ac orci sit amet molestie. Nulla in dapibus felis, vel
+        tempus sapien. Aenean at lacus ac odio pharetra rhoncus. Aenean faucibus a nunc quis ultrices. Etiam
+        bibendum porta dui vitae rutrum.
+        <br/>
+        <br/>
+        Aenean cursus, dolor nec volutpat pretium, est sapien sodales quam, non pharetra quam metus laoreet
+        dui. Integer lobortis ante non neque convallis, et dictum diam ultrices. Sed lectus tortor,
+        pellentesque a nulla quis, suscipit gravida lorem. Proin tortor neque, facilisis nec tempus eget,
+        gravida at metus. Mauris placerat sed eros sed porttitor. Vivamus posuere dui sit amet sapien
+        vehicula tristique. Vestibulum varius suscipit est, vel sodales sem bibendum vel. Etiam gravida, nisl
+        id bibendum ullamcorper, tortor leo pretium mi, et feugiat velit lectus sit amet metus. Maecenas odio
+        augue, ullamcorper eu condimentum vel, pulvinar quis augue. Class aptent taciti sociosqu ad litora
+        torquent per conubia nostra, per inceptos himenaeos. Nullam eu vehicula neque. Mauris sit amet magna
+        vehicula, malesuada augue ut, facilisis diam. In nulla nisl, tempus vel ultrices quis, vehicula at
+        quam. Suspendisse pellentesque eros mattis sem condimentum, et laoreet libero tristique.
+      </div>
+    </div>
+  </div>
+</div>

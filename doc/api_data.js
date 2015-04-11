@@ -1,0 +1,456 @@
+define({ "api": [
+  {
+    "type": "get",
+    "url": "/api/auth/exists/:email",
+    "title": "userExists",
+    "group": "Auth",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email address to lookup (request.params.email).</p> "
+          }
+        ]
+      }
+    },
+    "description": "<p>Determines if a user is already registered.</p> ",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "boolean",
+            "optional": false,
+            "field": "response",
+            "description": "<p>True if the email address is regitered. False otherwise.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n    true",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "none",
+            "description": "<p>Non-specific error</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "400 Error-Response:",
+          "content": "    HTTP/1.1 400 Bad Request\n      Bad Request",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "controller/rest.js",
+    "groupTitle": "Auth",
+    "name": "GetApiAuthExistsEmail"
+  },
+  {
+    "type": "post",
+    "url": "/api/recaptcha/verify",
+    "title": "verifyRecaptcha",
+    "group": "Recaptcha",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Recaptcha",
+            "optional": false,
+            "field": "recaptcha",
+            "description": "<p>The challenge and response to verify.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "    {\n      challenge: \"03AHJ_VutKv5WG9GVXoAeTzQGwcrD9jwnGCIBjvOeO090zbEWRrgCQoXTT7vxkO4uPS-my-Z9iU0EYPrUL-8ZVRs4gXMxvtd9ZODYcYDbalz6ptK-OewtW5vkK8jPPFF_LyBhfYjeqH4corlZFiJEF3mlQSPTyAREGwxoEK3HTNQWwX_ZlaCfNVzPhFpn3lfMr1vic9HBdjAAyZO-v_46BPYiCzu72WXALH2U56LTEq-HCelVZCxvfjMHgOQq1-sfrhxvZsmxi19Ous3XNB72K70rDsUTzWVHGZSEJtGebErjHGhB-7JIOgrY\",\n      result: \"273\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "description": "<p>Validates a Recaptcha response.</p> ",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "RecaptchaResponse",
+            "optional": false,
+            "field": "response",
+            "description": "<p>The results of verification.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n    {\n      isValid: true,\n      isError: false,\n      errorMessage: \"\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "none",
+            "description": "<p>Non-specific error</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "400 Error-Response:",
+          "content": "    HTTP/1.1 400 Bad Request\n      Bad Request",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "controller/rest.js",
+    "groupTitle": "Recaptcha",
+    "name": "PostApiRecaptchaVerify"
+  },
+  {
+    "type": "get",
+    "url": "/api/users",
+    "title": "retrieveUsers",
+    "group": "User",
+    "description": "<p>Retrieves a list of registered users.</p> ",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "User[]",
+            "optional": false,
+            "field": "users",
+            "description": "<p>An array of registered users.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n    [\n     {\n       _id: \"5435eb0ad048c587b9bf6e18\",\n       email: \"sal@sanfilippo.ws\",\n       firstName: \"Salvatore\",\n       lastName: \"Sanfilippo\",\n       birthDate: \"2014-04-29T07:00:00.000Z\"\n     },\n     {\n       _id: \"5439d1466b5870476d4a3de8\",\n       email: \"mschoonbrood@gmail.com\",\n       firstName: \"Monique\",\n       lastName: \"Schoonbrood\",\n       birthDate: \"1960-08-06T07:00:00.000Z\"\n     }\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "none",
+            "description": "<p>Non-specific error</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Bad Request\n      Bad Request",
+          "type": "string"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "controller/rest.js",
+    "groupTitle": "User",
+    "name": "GetApiUsers"
+  },
+  {
+    "type": "get",
+    "url": "/api/users/:id",
+    "title": "retrieveUser",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User Id of user to retrieve (request.params.id).</p> "
+          }
+        ]
+      }
+    },
+    "description": "<p>Retrieves a registered user.</p> ",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "User",
+            "optional": false,
+            "field": "user",
+            "description": "<p>The registered user.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n    {\n      _id: \"5435eb0ad048c587b9bf6e18\",\n      email: \"sal@sanfilippo.ws\",\n      firstName: \"Salvatore\",\n      lastName: \"Sanfilippo\",\n      birthDate: \"2014-04-29T07:00:00.000Z\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "none",
+            "description": "<p>Non-specific error</p> "
+          }
+        ],
+        "404": [
+          {
+            "group": "404",
+            "optional": false,
+            "field": "none",
+            "description": "<p>User specified by <code>id</code> does not exist.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "404 Error-Response:",
+          "content": "    HTTP/1.1 404 Not Found\n      Not Found",
+          "type": "String"
+        },
+        {
+          "title": "400 Error-Response:",
+          "content": "    HTTP/1.1 400 Bad Request\n      Bad Request",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "controller/rest.js",
+    "groupTitle": "User",
+    "name": "GetApiUsersId"
+  },
+  {
+    "type": "post",
+    "url": "/api/users/",
+    "title": "createUser",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>The user&#39;s email address (request.body.email).</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "firstName",
+            "description": "<p>The user&#39;s first name (request.body.firstName).</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "lastName",
+            "description": "<p>The user&#39;s last name (request.body.lastName).</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "birthDate",
+            "description": "<p>The user&#39;s birth date (request.body.birthDate).</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>The user&#39;s first name (request.body.password).</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "    {\n      email: \"sal@sanfilippo.ws\",\n      firstName: \"Salvatore\",\n      lastName: \"Sanfilippo\",\n      birthDate: \"2014-04-29T07:00:00.000Z\"\n      password: \"2b29f8130b128ab61a198935fdf6afc2\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "description": "<p>Creates a new user.</p> ",
+    "success": {
+      "fields": {
+        "201": [
+          {
+            "group": "201",
+            "type": "AuthToken",
+            "optional": false,
+            "field": "token",
+            "description": "<p>The authentication token for the new user.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 201 OK\n    {\n      _id: \"54877e659d4b09261d780e70\",\n      expires: \"2014-12-09T23:17:41.626Z\",\n      user:\n      {\n      _id: \"5435eb0ad048c587b9bf6e18\",\n      email: \"sal@sanfilippo.ws\",\n      firstName: \"Salvatore\",\n      lastName: \"Sanfilippo\"\n      }\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "none",
+            "description": "<p>Non-specific error</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "400 Error-Response:",
+          "content": "    HTTP/1.1 400 Bad Request\n      Bad Request",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "controller/rest.js",
+    "groupTitle": "User",
+    "name": "PostApiUsers"
+  },
+  {
+    "type": "put",
+    "url": "/api/users/:id",
+    "title": "updateUser",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User Id of user to update (request.params.id).</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "firstName",
+            "description": "<p>The user&#39;s first name (request.body.firstName).</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "lastName",
+            "description": "<p>The user&#39;s last name (request.body.lastName).</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "birthDate",
+            "description": "<p>The user&#39;s birth date (request.body.birthDate).</p> "
+          }
+        ]
+      }
+    },
+    "description": "<p>Updates a registered user&#39;s profile.</p> ",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "User",
+            "optional": false,
+            "field": "user",
+            "description": "<p>The registered user.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n    {\n      _id: \"5435eb0ad048c587b9bf6e18\",\n      email: \"sal@sanfilippo.ws\",\n      firstName: \"Salvatore\",\n      lastName: \"Sanfilippo\",\n      birthDate: \"2014-04-29T07:00:00.000Z\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "none",
+            "description": "<p>Non-specific error</p> "
+          }
+        ],
+        "404": [
+          {
+            "group": "404",
+            "optional": false,
+            "field": "none",
+            "description": "<p>User specified by <code>id</code> does not exist.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "404 Error-Response:",
+          "content": "    HTTP/1.1 404 Not Found\n      Not Found",
+          "type": "String"
+        },
+        {
+          "title": "400 Error-Response:",
+          "content": "    HTTP/1.1 400 Bad Request\n      Bad Request",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "controller/rest.js",
+    "groupTitle": "User",
+    "name": "PutApiUsersId"
+  }
+] });

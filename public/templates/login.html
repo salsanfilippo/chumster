@@ -1,3 +1,4 @@
+<!--
 <centered-panel title="Sign In" enter-target="loginButton" has-error="{{ hasError }}">
     <form name="loginForm" class="form-horizontal">
         <div class="error-message-panel" ng-show="hasError">{{ errorMessage }}</div>
@@ -57,3 +58,41 @@
         ng-disabled="loggedIn || loginForm.$invalid"<br/>
     </form>
 </centered-panel>
+-->
+
+<div class="container col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-3" style="margin-top: 20em;">
+  <div class="panel panel-default"
+       ng-class="{ 'panel-default' : !hasError, 'panel-danger' : hasError }"
+       style="min-width: 335px;">
+    <div class="panel-heading">
+      <h2 class="panel-title">Login</h2>
+    </div>
+    <div class="panel-body">
+      <div class="alert alert-danger clear-bottom-margin" ng-show="hasError">{{ errorMessage }}</div>
+      <br/>
+      <form id="loginForm" name="loginForm" class="form">
+          <auto:fields fields="schema" data="user" options="options"></auto:fields>
+        <div class="form-group clear-bottom-margin" align="right" style="position: relative; top: -10px;">
+          <button id="loginButton"
+                  type="submit"
+                  class="btn btn-primary"
+                  style="width: 80px;"
+                  ng-click="login(loginForm)"
+                  popover="Log into the site"
+                  popover-trigger="mouseenter">Login</button>
+          &nbsp;
+          <button type="button"
+                  id="cancelButton"
+                  class="btn btn-default"
+                  style="width: 80px;"
+                  ng-click="cancel()">Cancel
+          </button>
+        </div>
+        <div class="clear-margin centered">
+            <a href="/register">Not a Chumster member? Register today!</a><br/>
+            <img src="img/chumster.png" style="width: 75px;">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

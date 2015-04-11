@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('MainMenuController',
-    function MainMenuController($scope, $location, authService) {
+    function MainMenuController($scope, $location, $log, authService) {
         $scope.user = {};
         $scope.$watch(authService.getAuthUser, function () {
             $scope.user = authService.getAuthUser();
@@ -17,7 +17,7 @@ app.controller('MainMenuController',
         };
 
         $scope.createEvent = function() {
-            console.log('Navigating to home...');
+            $log.info('Navigating to home...');
             $location.url('/home', true);
         };
     });

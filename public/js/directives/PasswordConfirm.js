@@ -3,23 +3,17 @@
 app.directive('passwordConfirm', ['$parse', function ($parse) {
   return {
     restrict: 'A',
-    scope: {
-      matchTarget: '=passwordConfirm',
-    },
     require: 'ngModel',
-    link: function link(scope, elem, attrs, ctrl) {
-      var validator = function (value) {
-        ctrl.$setValidity('match', value === scope.matchTarget);
-        return value;
+    link: function (scope, element, attrs, ngModel) {
+      var validate = function (viewValue) {
+        var password = scope.$eval(attrs.passwordConfirm);
+        ngModel.$setValidity('match', ngModel.$isEmpty(viewValue) || viewValue == password);
+        return viewValue;
       }
-
-      ctrl.$parsers.unshift(validator);
-      ctrl.$formatters.push(validator);
-
-      // This is to force validator when the original password gets changed
-      scope.$watch('matchTarget', function(newval, oldval) {
-        validator(ctrl.$viewValue);
-      });
+      ngModel.$parsers.push(validate);
+      scope.$watch(attrs.passwordConfirm, function(value){
+        validate(ngModel.$viewValue);
+      })
     }
-  };
+  }
 }]);

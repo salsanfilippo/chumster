@@ -1,0 +1,37 @@
+<centered-panel title="Sign Up" enter-target="signUpButton" has-error="{{ hasError }}" style="padding: 8px;">
+  <form name="signUpForm" class="form-horizontal">
+    <div style="margin: 8px 15px 8px 15px; ">
+      <div class="error-message-panel" ng-show="hasError">{{ errorMessage }}</div>
+      <auto:fields fields="schema" data="user" options="options"></auto:fields>
+
+      <label for="recaptcha_widget">Bot Check</label>
+      <div re-captcha ng-model="login.captcha" id="recaptcha_widget" style="top: -5px; position: relative;">
+        <div id="recaptcha_image"></div>
+        <img id="recaptcha_logo" alt="" src="https://www.google.com/recaptcha/api/img/clean/logo.png">
+        <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="form-control"/>
+      </div>
+
+    </div>
+
+    <div style="width: 100%" align="right">
+      <button type="button"
+              id="signUpButton"
+              ng-click="signup(signUpForm)"
+              class="btn btn-default"
+              style="width: 80px;"
+              ng-disabled="signUpForm.$invalid"
+              ng-class="{ 'btn-primary': true }"
+              tabindex="100">Sign Up
+      </button>
+      &nbsp;
+      <button type="button"
+              id="cancelButton"
+              class="btn btn-default"
+              style="width: 80px;"
+              ng-click="cancel()"
+              tabindex="101">Cancel
+      </button>
+    </div>
+    <button type="button" ng-click="captchaReload()">reload</button>
+  </form>
+</centered-panel>
