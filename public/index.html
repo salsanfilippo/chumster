@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
 
     <link href='http://fonts.googleapis.com/css?family=Gruppo|Roboto:400,400italic,700,700italic|Roboto+Slab:400,700|Open+Sans:400italic,700italic,400,700|Alegreya+Sans+SC:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -14,61 +15,22 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body ng-cloak>
-<nav class="navbar navbar-fixed-top" ng-controller="MainMenuController">
-    <div class="container-fluid container-nav">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/home">
-                    <img alt="Chumster" src="/img/chumster.png">
-                </a>
-            </div>
-        </div>
+<!-- bootstrap navbar -->
+<div ng-include="'templates/navbar-top.html'"></div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="navbar-inner"> <!-- collapse navbar-collapse -->
-            <ul class="nav navbar-nav">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/events/new">Create Event</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav pull-right" ng-hide="isAuthenticated()">
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-            </ul>
-            <ul class="nav navbar-nav pull-right" ng-show="isAuthenticated()">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" href="#">Welcome {{user.firstName}}</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/editProfile">Edit Profile</a></li>
-                        <li><a href="#" ng-click="logout()">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!--
-            <form class="navbar-form navbar-right" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-addon" ng-click="alert('Search!')"><i class="glyphicon glyphicon-search"></i></span>
-                </div>
-            </form>
-            -->
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
 <div class="container">
     <div id="loaderDiv" loader class="hidden">
         <img src="img/spinner.gif" class="ajax-loader"/>
     </div>
-    <ng-view>
-    </ng-view>
+
+    <div style="margin-top: 5em; margin-bottom: 5em;" ng-view></div>
+
+    <!-- Notifications -->
+    <div noty ng-repeat="n in notifications"/>
 </div>
+
+<!-- footer -->
+<div ng-include="'templates/navbar-bottom.html'"></div>
 
 <!-- Load from CDN -->
 <script src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
@@ -76,6 +38,7 @@
 <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 
 <script src="//code.angularjs.org/1.3.0/angular.js"></script>
@@ -83,6 +46,10 @@
 <script src="//code.angularjs.org/1.3.0/angular-route.js"></script>
 <script src="//code.angularjs.org/1.3.0/angular-resource.js"></script>
 <script src="//code.angularjs.org/1.3.0/angular-messages.js"></script>
+
+<script src="bower_components/noty/js/noty/packaged/jquery.noty.packaged.js"></script>
+<script src="bower_components/noty/js/noty/layouts/bottomRight.js"></script>
+<script src="bower_components/noty/js/noty/themes/nucleus.js"></script>
 
 <script src="bower_components/ng-file-upload/angular-file-upload-shim.min.js"></script>
 <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
@@ -97,6 +64,7 @@
 <script src="js/object.js"></script>
 <script src="js/string.js"></script>
 <script src="js/app.js"></script>
+<script src="js/notificationManager.js"></script>
 
 <script src="js/interceptors/HttpInterceptor.js"></script>
 
@@ -107,6 +75,8 @@
 <script src="js/directives/IsDate.js"></script>
 <script src="js/directives/PasswordConfirm.js"></script>
 <script src="js/directives/ValidPassword.js"></script>
+<script src="js/directives/Noty.js"></script>
+<script src="js/directives/FadeIn.js"></script>
 
 <script src="js/services/AuthService.js"></script>
 <script src="js/services/GravatarUrlBuilder.js"></script>

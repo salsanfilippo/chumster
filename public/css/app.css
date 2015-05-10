@@ -60,9 +60,14 @@
     font-size: 16px !important;
 }
 
-.navbar-nav>li>a:hover, .navbar-nav>li>a:active, .navbar-nav>li>a:focus {
+.navbar-nav>li>a:hover, .navbar-nav>li>a:active { /* .navbar-nav>li>a:focus */
     color: #3a638f !important;
     background-color: #ccc !important;
+}
+
+.navbar-icon {
+    padding-right: 8px;
+    vertical-align: text-bottom;
 }
 
 .dropdown-menu>li>a {
@@ -294,4 +299,10 @@ p#bar::after {
     height:23px;
     border-radius: 4px;
     padding-left: 4px !important;
+}
+
+.about-img {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
 }

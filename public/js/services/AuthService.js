@@ -8,6 +8,12 @@ app.service('authService',
                 * PUBLIC METHODS.
                 */
 
+              var initialState = true;
+
+              this.initialState = function() {
+                return initialState;
+              };
+
               /**
                 * Determine if the given email address is already registered..
                 * @param email The email address to check
@@ -45,11 +51,12 @@ app.service('authService',
                                     });
 
                 return (request.then(function (response) {
+                                       initialState = false;
                                        setUserAuthToken(response.data);
                                        return handleSuccess(response);
                                      }, handleError));
               };
-  
+
               // I remove the friend with the given ID from the remote collection.
               this.signOut = function () {
                                var request = $http({

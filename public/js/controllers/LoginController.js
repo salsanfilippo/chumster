@@ -76,7 +76,7 @@ app.controller('LoginController',
                                       $scope.loggedIn = true;
                                       $scope.token = JSON.stringify(response);
                                       'Success:\n%s'.printf($scope.token);
-                                      goHome();
+                                      //goHome();
                                     },
                                     function(response) {
                                       $scope.loggedIn = false;

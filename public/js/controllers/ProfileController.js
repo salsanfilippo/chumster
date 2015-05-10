@@ -16,7 +16,7 @@ app.controller('ProfileController',
                    confirmPassword: ''//,
                    //captcha: { response: '', challenge: '' }
                  };
-debugger
+
                  //$scope.recaptcha = vcRecaptchaService;
 
                  $scope.schema = [

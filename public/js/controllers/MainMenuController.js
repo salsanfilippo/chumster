@@ -13,7 +13,7 @@ app.controller('MainMenuController',
 
         $scope.logout = function () {
             authService.signOut();
-            $location.url('/home', true);
+            //$location.url('/home', true);
         };
 
         $scope.createEvent = function() {
